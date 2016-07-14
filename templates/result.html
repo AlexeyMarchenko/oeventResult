@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Results</title>
+</head>
+<body>
+	{% for category in categories %}
+		{{ category.title}}<br />
+		{% for runner in category.runners %}
+			{{ runner.name }}<br />
+		{% endfor %}
+	{% endfor %}
+</body>
+</html>

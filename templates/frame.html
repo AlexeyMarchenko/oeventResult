@@ -1,0 +1,17 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<iframe id="frame" src="res{{ i }}.html" frameborder="0" width="100%"></iframe>
+<script type="text/javascript">
+$("#frame").height($(document).height()-20);
+
+$(window).load(function(){
+
+  $("#frame").contents().find("body").animate({ scrollTop: 0}).delay(1000).animate({scrollTop: $("#frame").contents().height()}, $("#frame").contents().height()*3, "linear", function(){setTimeout(function(){location.reload(true)}, 1000);})
+
+});
+</script>
+</body>
+</html>

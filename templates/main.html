@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<table width="100%" border="1">
+<tr>
+    {% for column in columns %}
+        <td><iframe id="frame{{ loop.index0}}" src="frame{{ loop.index0 }}.html" frameborder="0" width="100%"></iframe></td>
+    {% endfor %}
+</tr>
+</table>
+<script type="text/javascript">
+    {% for column in columns %}
+        $("#frame{{ loop.index0 }}").height($(document).height()-30);
+    {% endfor %}
+</script>
+</body>
+</html>
