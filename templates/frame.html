@@ -9,7 +9,7 @@ $("#frame").height($(document).height()-20);
 
 $(window).load(function(){
 
-  $("#frame").contents().find("body").animate({ scrollTop: 0}).delay(1000).animate({scrollTop: $("#frame").contents().height()}, $("#frame").contents().height()*10, "linear", function(){setTimeout(function(){location.reload(true)}, 1000);})
+  $("#frame").contents().find("body").animate({ scrollTop: 0}).delay(2000).animate({scrollTop: $("#frame").contents().height()}, $("#frame").contents().height()*10, "linear", function(){setTimeout(function(){location.reload(true)}, 1000);})
 
 });
 </script>
