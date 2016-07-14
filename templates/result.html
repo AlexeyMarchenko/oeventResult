@@ -1,15 +1,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Results</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Results</title>
+
+	<!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Results -->
+    <link href="css/results.css" rel="stylesheet">
+	<style type="text/css">
+	body {
+    	overflow:hidden;
+	}
+	</style>
 </head>
 <body>
-	{% for category in categories %}
-		{{ category.title}}<br />
-		{% for runner in category.runners %}
-			{{ runner.name }}<br />
+	<div class="container-fluid">
+		<table class="table">
+		{% for category in categories %}
+			{% if category.runners %}
+			<tr>
+				<td colspan="3"><h2>{{ category.title}}</h2></td>
+			</tr>
+			{% for runner in category.runners %}
+				<tr>
+					<td><strong>{{ runner.place }}</strong></td>
+					<td><strong>{{ runner.name }}</strong><br /><small>{{ runner.club }}</small></td>
+					<td><strong>{{ runner.time }}</strong><br /><small>{% if runner.behind %} +{{ runner.behind}} {% endif %}</small></td>
+				</tr>
+			{% endfor %}
+			{% endif %}
 		{% endfor %}
-	{% endfor %}
+		</table>
+	</div>
 </body>
 </html>

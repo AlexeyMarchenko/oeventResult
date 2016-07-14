@@ -34,7 +34,11 @@ else:
 
     pickle.dump(categories_dict, open('./data.p', 'wb'))
 
-columns = [categories_dict.keys(), categories_dict.keys()]
+columns = [
+    categories_dict.keys(),
+    categories_dict.keys(),
+    categories_dict.keys()
+]
 
 if not os.path.exists(www_directory):
     os.makedirs(www_directory)
@@ -49,7 +53,10 @@ for i, column in enumerate(columns):
 with open(os.path.join(www_directory, 'main.html'), 'w', encoding='utf-8') as f:
     f.write(j2_env.get_template('main.html').render(columns=columns))
 
-shutil.copyfile(os.path.join(template_directory, 'jquery-2.1.4.min.js'), os.path.join(www_directory, 'jquery-2.1.4.min.js'))
-
-
+if not os.path.exists(os.path.join(www_directory, 'css')):
+    shutil.copytree(os.path.join(template_directory, 'css'), os.path.join(www_directory, 'css'))
+if not os.path.exists(os.path.join(www_directory, 'js')):
+    shutil.copytree(os.path.join(template_directory, 'js'), os.path.join(www_directory, 'js'))
+if not os.path.exists(os.path.join(www_directory, 'fonts')):
+    shutil.copytree(os.path.join(template_directory, 'fonts'), os.path.join(www_directory, 'fonts'))
 
